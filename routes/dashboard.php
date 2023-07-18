@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('Dashboard_Admin', [DashboardController::class,'index']);
+
+Route::get('/dashboard_', function () {
+    return view('Dashboard.User.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+require __DIR__.'/auth.php';
