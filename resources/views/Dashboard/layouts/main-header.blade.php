@@ -315,25 +315,23 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>Profile</a>
-                        <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="bx bx-cog"></i> Edit
+                        <a class="dropdown-item" href=""><i class="bx bx-cog"></i> Edit
                             Profile</a>
                         <a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
                         <a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
                         <a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
 
 
-                        {{-- @if (auth('web')->check())
+                        @if (auth('web')->check())
                             <form method="POST" action="{{ route('logout.user') }}">
-                            @else
+                            @elseif(auth('admin')->check())
                                 <form method="POST" action="{{ route('logout.admin') }}">
-                        @endif --}}
-                        <form method="POST" action="{{ route('logout.user') }}">
-
-                            @csrf
-                            <a class="dropdown-item" href="{{ route('logout.user') }}"
-                                onclick="event.preventDefault();
-                            this.closest('form').submit();"><i
-                                    class="bx bx-log-out"></i> Sign Out</a>
+                        @endif
+                        @csrf
+                        <a class="dropdown-item" href="#"
+                            onclick="event.preventDefault();
+                                                this.closest('form').submit();"><i
+                                class="bx bx-log-out"></i> Sign Outtt</a>
                         </form>
 
                     </div>

@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use  HasApiTokens,HasFactory, Notifiable;
 
     protected $fillable = [
         'name',
@@ -35,6 +35,6 @@ class Admin extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-
+        'password' => 'hashed',
     ];
 }
