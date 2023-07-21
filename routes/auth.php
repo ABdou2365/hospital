@@ -23,22 +23,19 @@ Route::middleware('guest')->group(function () {
 
     ################################ User Routes #################################
 
-    Route::get('User/login', [AuthenticatedSessionController::class, 'create'])
-                ->name('login');
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])->middleware('guest')->name('login');
 
-    Route::post('login/user', [AuthenticatedSessionController::class, 'store'])->name('login.user');
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest')->name('login.user');
 
-    Route::post('logout/user', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('logout.user');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth')->name('logout.user');
 
     ################################ Admin Routes #################################
 
 
 
-    Route::post('login/admin', [AdminController::class, 'store'])->name('login.admin');
+    Route::post('/login/admin', [AdminController::class, 'store'])->middleware('guest')->name('login.admin');
 
-    Route::post('logout/admin', [AdminController::class, 'destroy'])
-                ->name('logout.admin');
+Route::post('/logout/admin', [AdminController::class, 'destroy'])->middleware('auth:admin')->name('logout.admin');
 
 
 
