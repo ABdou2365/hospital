@@ -26,16 +26,20 @@ Route::middleware('guest')->group(function () {
     Route::get('User/login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login.user');;
+    Route::post('login/user', [AuthenticatedSessionController::class, 'store'])->name('login.user');
 
-
-
+    Route::post('logout/user', [AuthenticatedSessionController::class, 'destroy'])
+                ->name('logout.user');
 
     ################################ Admin Routes #################################
 
 
 
-    Route::post('login', [AdminController::class, 'store'])->name('login.admin');;
+    Route::post('login/admin', [AdminController::class, 'store'])->name('login.admin');
+
+    Route::post('logout/admin', [AdminController::class, 'destroy'])
+                ->name('logout.admin');
+
 
 
 
@@ -73,6 +77,5 @@ Route::middleware('auth')->group(function () {
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('logout');
+
 });

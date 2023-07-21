@@ -321,11 +321,18 @@
                         <a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
                         <a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
 
-                        <form method="POST" action="{{ route('logout') }}">
+
+                        {{-- @if (auth('web')->check())
+                            <form method="POST" action="{{ route('logout.user') }}">
+                            @else
+                                <form method="POST" action="{{ route('logout.admin') }}">
+                        @endif --}}
+                        <form method="POST" action="{{ route('logout.user') }}">
+
                             @csrf
-                            <a class="dropdown-item" href="route('logout')"
+                            <a class="dropdown-item" href="{{ route('logout.user') }}"
                                 onclick="event.preventDefault();
-                                        this.closest('form').submit();"><i
+                            this.closest('form').submit();"><i
                                     class="bx bx-log-out"></i> Sign Out</a>
                         </form>
 
